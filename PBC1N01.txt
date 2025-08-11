@@ -1,0 +1,69 @@
+000010*----------------------------------------------------------------*
+000100 IDENTIFICATION DIVISION.
+000110*----------------------------------------------------------------*
+000200 PROGRAM-ID. PBC1N01.
+000300 AUTHOR. JAVIER BEUZON.
+000400 DATE-WRITTEN. 23/06/2019.
+000500*
+000600* Este programa muestra el mensaje "Hola mundo!" por pantalla
+000700*
+000710*----------------------------------------------------------------*
+000800 ENVIRONMENT DIVISION.
+000810*----------------------------------------------------------------*
+000900 CONFIGURATION SECTION.
+001000 INPUT-OUTPUT SECTION.
+001100
+001110*----------------------------------------------------------------*
+001200 DATA DIVISION.
+001300*----------------------------------------------------------------*
+001400 FILE SECTION.
+001500 WORKING-STORAGE SECTION.
+001600 01 CONSTANTES.
+001610    05 CTE-NOMPGM       PIC X(7)    VALUE 'PBC1N01'.
+001611    05 CTE-WILCARD      PIC X       VALUE '*'.
+001612    05 CTE-SPACE22      PIC X(22)   VALUE SPACES.
+001613    05 CTE-SPACE08      PIC X(08)  VALUE SPACES.
+001620 01 VARIABLES.
+001630    05 WS-MESSAGE1      PIC X(23).
+001640    05 WS-MESSAGE2      PIC X(23).
+001800
+001810*----------------------------------------------------------------*
+001900 PROCEDURE DIVISION.
+002000*----------------------------------------------------------------*
+002100      PERFORM 1000-INICIO
+002200      PERFORM 2000-PROCESS
+002300      PERFORM 3000-END.
+002400
+002500 1000-INICIO.
+002510      MOVE SPACES                    TO WS-MESSAGE1
+002511                                        WS-MESSAGE2
+002513
+002515      PERFORM DAR-ESPACIO 12 TIMES
+002523      .
+002524
+002800 2000-PROCESS.
+002810      MOVE 'Hola mundo!            ' TO WS-MESSAGE1
+002820      MOVE 'Aprendo COBOL en Udemy!' TO WS-MESSAGE2
+002821
+002823      DISPLAY CTE-SPACE22 '************************************'
+002824      DISPLAY CTE-SPACE22 '* COMIENZA EL PROGRAMA ' CTE-NOMPGM
+002825              '     *'
+002830      DISPLAY CTE-SPACE22 '* -------------------------------- *'
+002900      DISPLAY CTE-SPACE22 '*   ' WS-MESSAGE1 CTE-SPACE08
+002901                                             CTE-WILCARD
+002910      DISPLAY CTE-SPACE22 '*   ' WS-MESSAGE2 CTE-SPACE08
+002911                                             CTE-WILCARD
+002920      DISPLAY CTE-SPACE22 '* -------------------------------- *'
+003000      .
+003001
+003002 DAR-ESPACIO.
+003003      DISPLAY ' '
+003005      .
+003020
+003100 3000-END.
+003200      DISPLAY CTE-SPACE22 '*  FIN DEL PROGRAMA ' CTE-NOMPGM
+003201                                                CTE-SPACE08
+003202                                                CTE-WILCARD
+003210      DISPLAY CTE-SPACE22 '************************************'
+003300      STOP RUN.
+
